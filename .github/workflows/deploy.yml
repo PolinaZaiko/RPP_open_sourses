@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: DeploytoGitHubPages
 on:
  release:
    types: [published]
@@ -15,4 +15,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
-          
