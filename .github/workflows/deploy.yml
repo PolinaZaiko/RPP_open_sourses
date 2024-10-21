@@ -10,15 +10,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      - name: Create version directory
+        run: |
+          mkdir -p ./v1
+          cp -r ./en ./v1/en
+          cp -r ./ru ./v1/ru
+          cp ./index.html ./v1/index.html
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./RPP_open_sourses
+          publish_dir: ./v1
           publish_branch: gh-pages
-          
