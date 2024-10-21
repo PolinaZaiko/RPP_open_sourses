@@ -18,6 +18,7 @@ jobs:
           mkdir -p "./${VERSION}/en"
           mkdir -p "./${VERSION}/ru"
           mkdir -p "./${VERSION}/.github/workflows"
+      
           
           # Копирование всех файлов и директорий в новую версию
           cp -r ./en/* "./${VERSION}/en/"
