@@ -19,7 +19,7 @@ jobs:
           mkdir -p "./${VERSION}/en/"
           mkdir -p "./${VERSION}/ru/"
 
-          # Копирование всех директорий и файла в новый релиз
+          # Копирование всех директорий и файлов в новый релиз
           cp -r ./en/* "./${VERSION}/en/"
           cp -r ./ru/* "./${VERSION}/ru/"
           cp ./index.html "./${VERSION}/"
@@ -28,5 +28,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4 # Используем Actions для публикации
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для аунтефикации
-          publish_branch: gh-pages
+          publish_branch: gh-pages # Ветка, в которую будут публиковаться файлы
           keep_files: true  # Сохранять предыдущие файлы
