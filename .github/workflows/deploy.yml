@@ -13,9 +13,12 @@ jobs:
       - name: Create version directory
         run: |
           VERSION=${{ github.event.release.tag_name }}
+          
           # Создание директорий для версии
           mkdir -p "./${VERSION}/en"
           mkdir -p "./${VERSION}/ru"
+          mkdir -p "./${VERSION}/.github/workflows"
+          
           # Копирование всех файлов и директорий в новую версию
           cp -r ./en/* "./${VERSION}/en/"
           cp -r ./ru/* "./${VERSION}/ru/"
