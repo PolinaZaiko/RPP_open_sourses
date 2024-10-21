@@ -12,15 +12,17 @@ jobs:
 
       - name: Create version directory
         run: |
-          mkdir -p ./v1
-          cp -r ./en ./v1/en
-          cp -r ./ru ./v1/ru
-          cp ./index.html ./v1/index.html
-
+          VERSION=${{ github.event.release.tag_name }}
+          mkdir -p "./${VERSION}/en"
+          mkdir -p "./${VERSION}/ru"
+          cp -r ./en/* "./${VERSION}/en/"
+          cp -r ./ru/* "./${VERSION}/ru/"
+          cp ./index.html "./${VERSION}/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./v1
+          publish_dir: ./
           publish_branch: gh-pages
+          keep_files: true  # Сохранять предыдущие файлы
