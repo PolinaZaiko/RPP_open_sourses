@@ -19,7 +19,7 @@ jobs:
           cp -r ./ru/* "./${VERSION}/ru/"
           cp ./index.html "./${VERSION}/"
           # Копируем директорию RPP_open_sourses
-          cp -r ./github/* "./${VERSION}/github/"
+          cp -r ./github/workflows/* "./${VERSION}/github/workflows/"
 
 
       - name: Deploy to GitHub Pages
