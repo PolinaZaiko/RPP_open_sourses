@@ -28,6 +28,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4 # Используем Actions для публикации
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для аунтефикации
-          publish_dir: ./${VERSION}  # Папка, содержащая файлы для публикации
+          publish_dir: ./ # Директория, содержащая файлы для публикации
           publish_branch: gh-pages # Ветка, в которую будут публиковаться файлы
           keep_files: true  # Сохранять предыдущие файлы
