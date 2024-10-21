@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest  Указание среды выполнения для работы (Ubuntu последней версии)
     steps: # Шаги, которые будут выполнены в рамках работы
     
-      - name: Checkout code # 1 Шаг. # Извлечение последней версии кода из репозитория
+      - name: Checkout code # 1 Шаг. Извлечение последней версии кода из репозитория
         uses: actions/checkout@v2 
 
       - name: Build release # 2 Шаг. Сборка релиза 
@@ -28,6 +28,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4 # Используем Actions для публикации
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для аунтефикации
-          # publish_dir: ./ Папка, содержащая 
           publish_branch: gh-pages
           keep_files: true  # Сохранять предыдущие файлы
