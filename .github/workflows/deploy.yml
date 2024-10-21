@@ -14,15 +14,10 @@ jobs:
         run: |
           VERSION=${{ github.event.release.tag_name }}
           
-          # Создание директорий для версии
-          mkdir -p "./site/${VERSION}/en"
-          mkdir -p "./site/${VERSION}/ru"
-                
           # Копирование всех файлов и директорий в новую версию
           cp -r ./en/* "./site/${VERSION}/en/"
           cp -r ./ru/* "./site/${VERSION}/ru/"
           cp ./index.html "./site/${VERSION}/"
-
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
