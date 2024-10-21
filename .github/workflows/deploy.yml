@@ -16,18 +16,18 @@ jobs:
           VERSION=${{ github.event.release.tag_name }} # Получение имени тега релиза
 
           # Создание необходимых папок для релиза
-          mkdir -p "./${VERSION}/en/"
-          mkdir -p "./${VERSION}/ru/"
+          mkdir -p "./site/${VERSION}/en/"
+          mkdir -p "./site/${VERSION}/ru/"
 
           # Копирование всех директорий и файлов в новый релиз
-          cp -r ./en/* "./${VERSION}/en/"
-          cp -r ./ru/* "./${VERSION}/ru/"
-          cp ./index.html "./${VERSION}/"
+          cp -r ./en/* "./site/${VERSION}/en/"
+          cp -r ./ru/* "./site/${VERSION}/ru/"
+          cp ./index.html "./site/${VERSION}/"
 
       - name: Deploy to GitHub Pages # 3 Шаг. Публикация файлов на GitHub Pages
         uses: peaceiris/actions-gh-pages@v4 # Используем Actions для публикации
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для аунтефикации
-          publish_dir: . # Директория, содержащая файлы для публикации
+          publish_dir: ./site # Директория, содержащая файлы для публикации
           publish_branch: gh-pages # Ветка, в которую будут публиковаться файлы
           keep_files: true  # Сохранять предыдущие файлы
