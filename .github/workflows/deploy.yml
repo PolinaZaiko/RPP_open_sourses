@@ -18,6 +18,9 @@ jobs:
           cp -r ./en/* "./${VERSION}/en/"
           cp -r ./ru/* "./${VERSION}/ru/"
           cp ./index.html "./${VERSION}/"
+          # Копируем директорию RPP_open_sourses
+          cp -r ./github "./${VERSION}/"
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
