@@ -14,19 +14,15 @@ jobs:
         run: |
           VERSION=${{ github.event.release.tag_name }}
 
-          # Создание необходимых директорий
-          mkdir -p "./site/${VERSION}/en/"
-          mkdir -p "./site/${VERSION}/ru/"
-
           # Копирование всех файлов и директорий в новую версию
-          cp -r ./en/* "./site/${VERSION}/en/"
-          cp -r ./ru/* "./site/${VERSION}/ru/"
-          cp ./index.html "./site/${VERSION}/"
+          cp -r ./en/* "./${VERSION}/"
+          cp -r ./ru/* "./${VERSION}/"
+          cp ./index.html "./${VERSION}/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          publish_dir: ./
           publish_branch: gh-pages
           keep_files: true  # Сохранять предыдущие файлы
