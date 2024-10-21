@@ -1,0 +1,31 @@
+name: DeploytoGitHubPages
+on:
+ release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create version directory
+        run: |
+          VERSION=${{ github.event.release.tag_name }}
+          
+          # Создание директорий для версии
+          mkdir -p "./${VERSION}/en"
+          mkdir -p "./${VERSION}/ru"
+                
+          # Копирование всех файлов и директорий в новую версию
+          cp -r ./en/* "./${VERSION}/en/"
+          cp -r ./ru/* "./${VERSION}/ru/"
+          cp ./index.html "./${VERSION}/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./${VERSION}
+          keep_files: true  # Сохранять предыдущие файлы
