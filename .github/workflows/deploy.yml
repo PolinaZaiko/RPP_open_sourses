@@ -1,31 +1,33 @@
-name: DeploytoGitHubPages
+name: PagesReleases # Название действия, которое будет выполняться при создании релиза
 on:
  release:
-    types: [created]
+    types: [created] # Триггер, который запускает действие при создании нового релиза
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  deploy: # Определение работы под названием "deploy"
+    runs-on: ubuntu-latest  Указание среды выполнения для работы (Ubuntu последней версии)
+    steps: # Шаги, которые будут выполнены в рамках работы
+    
+      - name: Checkout code # 1 Шаг. # Извлечение последней версии кода из репозитория
+        uses: actions/checkout@v2 
 
-      - name: Create version directory
+      - name: Build release # 2 Шаг. Сборка релиза 
         run: |
-          VERSION=${{ github.event.release.tag_name }}
+          VERSION=${{ github.event.release.tag_name }} # Получение имени тега релиза
 
-          # Создание директории для версии
-          mkdir -p "./${VERSION}"
+          # Создание необходимых папок для релиза
+          mkdir -p "./${VERSION}/en/"
+          mkdir -p "./${VERSION}/ru/"
 
-          # Копирование всех файлов и директорий в новую версию
-          cp -r ./en/* "./${VERSION}/"
-          cp -r ./ru/* "./${VERSION}/"
+          # Копирование всех директорий и файла в новый релиз
+          cp -r ./en/* "./${VERSION}/en/"
+          cp -r ./ru/* "./${VERSION}/ru/"
           cp ./index.html "./${VERSION}/"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy to GitHub Pages # 3 Шаг. Публикация файлов на GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4 # Используем Actions для публикации
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Токен для аунтефикации
+          # publish_dir: ./ Папка, содержащая 
           publish_branch: gh-pages
           keep_files: true  # Сохранять предыдущие файлы
