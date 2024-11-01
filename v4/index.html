@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet">
+<style>
+    body {
+        background-color: lightblue;
+        color: rgb(61, 10, 71);
+        font-family: Arial;
+        margin: 0px;
+    }
+
+    main {
+        margin: 10px 20px;
+    }
+
+    header {
+        background-image: linear-gradient(to right, red, orange, yellow, green, lightblue, blue, violet);
+        color: lightgreen;
+        padding: 15px;
+        font-size: 16pt;
+        transition: 300ms;
+    }
+
+    header:hover {
+        background-image: linear-gradient(to left, rgb(169, 70, 244), lightblue, blue);
+    }
+
+    header:active {
+        color: pink;
+        font-size: 25px;
+    }
+
+    footer {
+        background-image: linear-gradient(to right, red, orange, yellow, green, lightblue, blue, violet);
+        color: lightgreen;
+        padding: 15px;
+        font-size: 16pt;
+        font-style: italic;
+        text-align: right;
+        transition: 300ms;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        }
+
+    footer:hover {
+        background-image: linear-gradient(to left, rgb(169, 70, 244), lightblue, blue);
+    }
+
+    footer:active {
+    color: pink;
+    font-size: 25px;
+
+    div {
+        text-align: justify;
+        text-indent: 1.25cm;
+        line-height: 150%;
+        margin-bottom: 30px;
+    }
+</style>
+</head>
+
+<body>
+    <header >
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+
+    <main>
+        <h1>Навигация по страницам</h1>
+        <nav>
+            <p><a href="ru/index.html">Русская версия</a></p>
+            <p><a href="en/index.html">English Version</a></p>
+        </nav>
+    </main>
+
+    <footer>
+    &copy; Заико Полина, Курилова Кристина, ФБИ-14, 4 курс, 2024
+    </footer>
+</body>
+</html>
+
